@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cl.labs.steinnx.sanguchote">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,8 +18,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.MenuPrincipalActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:name=".view.activities.MenuPrincipalActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".view.activities.DetalleCompra_Activity"></activity>
     </application>
 
 </manifest>

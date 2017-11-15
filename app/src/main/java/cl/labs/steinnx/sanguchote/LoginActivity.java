@@ -12,7 +12,7 @@ import android.widget.Toast;
 import cl.labs.steinnx.sanguchote.retrofit.API_Usuario_Interface;
 import cl.labs.steinnx.sanguchote.retrofit.Instance;
 import cl.labs.steinnx.sanguchote.retrofit.UsuarioResponse;
-import cl.labs.steinnx.sanguchote.view.MenuPrincipalActivity;
+import cl.labs.steinnx.sanguchote.view.activities.MenuPrincipalActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

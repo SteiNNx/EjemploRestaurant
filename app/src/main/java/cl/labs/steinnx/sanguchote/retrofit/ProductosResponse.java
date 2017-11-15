@@ -14,11 +14,11 @@ public class ProductosResponse {
 
     @SerializedName("estado")
     private int estado;
-    @SerializedName("usuario")
-    private List<CL_Producto> listaUsuarios;
+    @SerializedName("usuarios")
+    private List<CL_Producto> listaProductos;
 
     public ProductosResponse(List<CL_Producto> listaUsuarios, int estado) {
-        this.listaUsuarios = listaUsuarios;
+        this.listaProductos = listaUsuarios;
         this.estado = estado;
     }
 
@@ -30,11 +30,11 @@ public class ProductosResponse {
         this.estado = estado;
     }
 
-    public List<CL_Producto> getListaUsuarios() {
-        return listaUsuarios;
+    public List<CL_Producto> getListaProductos() {
+        return listaProductos;
     }
 
-    public void setListaUsuarios(List<CL_Producto> listaUsuarios) {
-        this.listaUsuarios = listaUsuarios;
+    public void setListaProductos(List<CL_Producto> listaUsuarios) {
+        this.listaProductos = listaUsuarios;
     }
 }

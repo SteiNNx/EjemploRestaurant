@@ -6,13 +6,22 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import cl.labs.steinnx.sanguchote.R;
+import cl.labs.steinnx.sanguchote.model.CL_Producto;
 import cl.labs.steinnx.sanguchote.model.adapter.ProductosAdapter;
+import cl.labs.steinnx.sanguchote.retrofit.API_Usuario_Interface;
 import cl.labs.steinnx.sanguchote.retrofit.Instance;
+import cl.labs.steinnx.sanguchote.retrofit.ProductosResponse;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
 /**
@@ -51,7 +60,24 @@ public class ListarProductos_Fragment extends Fragment {
     }
 
     private void llenarRecicler() {
-        
+        API_Usuario_Interface services = retrofit.create(API_Usuario_Interface.class);
+        Call<ProductosResponse> peliculasCall = services.listaProductos();
+        peliculasCall.enqueue(new Callback<ProductosResponse>() {
+            @Override
+            public void onResponse(Call<ProductosResponse> call, Response<ProductosResponse> response) {
+                if (response.isSuccessful()){
+                    ProductosResponse productos = response.body();
+                    Log.d("asdsd",""+productos.getEstado());
+                    List<CL_Producto> lista = productos.getListaProductos();
+                    productosAdapter.adiccionarProductos(lista);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProductosResponse> call, Throwable t) {
+
+            }
+        });
     }
 
     // TODO: Rename method, update argument and hook method into UI event

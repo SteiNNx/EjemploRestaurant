@@ -1,4 +1,4 @@
-package cl.labs.steinnx.sanguchote.view;
+package cl.labs.steinnx.sanguchote.view.activities;
 
 import android.net.Uri;
 import android.os.Bundle;
