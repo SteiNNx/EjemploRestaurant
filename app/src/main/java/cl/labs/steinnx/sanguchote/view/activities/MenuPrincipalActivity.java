@@ -1,5 +1,6 @@
 package cl.labs.steinnx.sanguchote.view.activities;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -15,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import cl.labs.steinnx.sanguchote.R;
 import cl.labs.steinnx.sanguchote.view.fragments.ListarProductos_Fragment;
@@ -68,6 +70,8 @@ public class MenuPrincipalActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent i = new Intent(MenuPrincipalActivity.this,DetalleCompra_Activity.class);
+            startActivity(i);
             return true;
         }
 

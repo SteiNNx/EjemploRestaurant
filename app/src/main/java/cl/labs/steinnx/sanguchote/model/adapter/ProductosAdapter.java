@@ -15,8 +15,11 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import cl.labs.steinnx.sanguchote.LoginActivity;
 import cl.labs.steinnx.sanguchote.R;
+import cl.labs.steinnx.sanguchote.model.CL_DetalleCompra;
 import cl.labs.steinnx.sanguchote.model.CL_Producto;
+import cl.labs.steinnx.sanguchote.model.ColeccionCarrito;
 
 /**
  * Created by LC1300XXXX on 14/11/2017.
@@ -52,13 +55,13 @@ public class ProductosAdapter extends  RecyclerView.Adapter<ProductosAdapter.Pro
             @Override
             public void onClick(View v) {
                 //Creo Dialog a partir del xml dialog_comprar
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                final AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 LayoutInflater layoutInflater = (LayoutInflater)context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
                 View view = layoutInflater.inflate(R.layout.dialog_comprar,null);
                 builder.setView(view);
                 //Instancio Componentes del Dialog
                 final TextView tv_cantidad = (TextView) view.findViewById(R.id.tv_dialog_cantidad);
-                tv_cantidad.setText("0");
+                tv_cantidad.setText("1");
                 ImageView iv_mas = (ImageView) view.findViewById(R.id.iv_dialog_mas);
                 ImageView iv_menos = (ImageView) view.findViewById(R.id.iv_dialog_menos);
                 iv_mas.setOnClickListener(new View.OnClickListener() {
@@ -86,6 +89,17 @@ public class ProductosAdapter extends  RecyclerView.Adapter<ProductosAdapter.Pro
                     }
                 });
                 Button btn_comprar = (Button) view.findViewById(R.id.btn_dialog_comprar);
+                btn_comprar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        CL_DetalleCompra detalleCompra = new CL_DetalleCompra();
+                        detalleCompra.setProducto(producto);
+                        detalleCompra.setCantidad(Integer.parseInt(tv_cantidad.getText().toString()));
+                        ColeccionCarrito.agregarPelicula(detalleCompra);
+                        builder.create().cancel();
+                    }
+                });
+
 
                 builder.create().show();
             }
