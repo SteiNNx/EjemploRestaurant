@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import cl.labs.steinnx.sanguchote.model.adapter.ProductosAdapter;
 public class DetalleCompra_Activity extends AppCompatActivity {
 
     private DetalleCarritoAdapter carritoAdapter;
-    
+    private Button btn_finalizar;
     private RecyclerView rv_carrito;
 
     @Override
@@ -25,6 +26,7 @@ public class DetalleCompra_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_compra);
         rv_carrito = (RecyclerView) findViewById(R.id.rv_detalle_detalle_compra);
+        btn_finalizar = (Button) findViewById(R.id.btn_finalizar);
 
         ArrayList<CL_DetalleCompra> listaCarrito= ColeccionCarrito.obtenerProductos();
         if (listaCarrito!=null){

@@ -19,11 +19,15 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import cl.labs.steinnx.sanguchote.R;
+import cl.labs.steinnx.sanguchote.view.fragments.ListarPedidos_Fragment;
 import cl.labs.steinnx.sanguchote.view.fragments.ListarProductos_Fragment;
+import cl.labs.steinnx.sanguchote.view.fragments.Perfil_Fragment;
 
 public class MenuPrincipalActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
-        ,ListarProductos_Fragment.OnFragmentInteractionListener{
+        ,ListarProductos_Fragment.OnFragmentInteractionListener
+        ,ListarPedidos_Fragment.OnFragmentInteractionListener
+        ,Perfil_Fragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,9 +91,9 @@ public class MenuPrincipalActivity extends AppCompatActivity
         if (id == R.id.nav_comprar) {
             addFragment(new ListarProductos_Fragment());
         } else if (id == R.id.nav_listar) {
-
+            addFragment(new ListarPedidos_Fragment());
         } else if (id == R.id.nav_perfil) {
-
+            addFragment(new Perfil_Fragment());
         } else if (id == R.id.nav_cerrar) {
 
         }

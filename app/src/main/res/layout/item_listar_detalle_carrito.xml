@@ -10,6 +10,7 @@
     <TextView
         android:text="Nombre Producto"
         android:textSize="20dp"
+        android:textColor="@color/colorTextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_carrito_nombre"
@@ -23,6 +24,7 @@
     <TextView
         android:text="Cantidad Producto"
         android:textSize="18dp"
+        android:textColor="@color/colorTextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_carrito_cantidad"
@@ -36,6 +38,7 @@
 
     <TextView
         android:text="Cantidad: "
+        android:textColor="@color/colorTextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView4"
