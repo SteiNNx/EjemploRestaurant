@@ -1,8 +1,11 @@
 package cl.labs.steinnx.sanguchote.view;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,9 +17,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import cl.labs.steinnx.sanguchote.R;
+import cl.labs.steinnx.sanguchote.view.fragments.ListarProductos_Fragment;
 
 public class MenuPrincipalActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener
+        ,ListarProductos_Fragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +81,7 @@ public class MenuPrincipalActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_comprar) {
-            // Handle the camera action
+            addFragment(new ListarProductos_Fragment());
         } else if (id == R.id.nav_listar) {
 
         } else if (id == R.id.nav_perfil) {
@@ -88,5 +93,22 @@ public class MenuPrincipalActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void addFragment(Fragment fragment){
+        if (null != fragment){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    //.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right)
+                    .replace(R.id.mi_frame, fragment)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                    .addToBackStack(null)
+                    .commit();
+        }
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

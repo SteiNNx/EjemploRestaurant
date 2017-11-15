@@ -53,14 +53,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onResponse(Call<UsuarioResponse> call, Response<UsuarioResponse> response) {
                 if (response.isSuccessful()){
                     UsuarioResponse resp = response.body();
-                    Toast.makeText(LoginActivity.this,resp.getEstado(), Toast.LENGTH_SHORT).show();
+                    Log.e("BODY LO!!!!!!!!!!!!!","onResponeseeeeeeeeeeee: "+response.body().getEstado());
                     if (resp.getEstado()==1 ){
                         Intent i = new Intent(LoginActivity.this, MenuPrincipalActivity.class);
                         startActivity(i);  
                     }else if(  resp.getEstado()==2  ){
-                        Toast.makeText(LoginActivity.this, "No Se Obtubo el registro", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Usuario Incorrecto", Toast.LENGTH_SHORT).show();
                     }else if(resp.getEstado()==3 ){
-                        Toast.makeText(LoginActivity.this, "Se necesita un identificador", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Ingrese los campos necesarios", Toast.LENGTH_SHORT).show();
                     }
                 }else{
                     Log.e("ERRORRRRR!!!!!!!!!!!!!!","onResponeseeeeeeeeeeee: "+response.errorBody());
