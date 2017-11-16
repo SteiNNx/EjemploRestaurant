@@ -10,8 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import cl.labs.steinnx.sanguchote.R;
-import cl.labs.steinnx.sanguchote.model.CL_DetalleCompra;
-import cl.labs.steinnx.sanguchote.model.CL_Producto;
+import cl.labs.steinnx.sanguchote.model.DetalleCompra;
 
 /**
  * Created by DUOC on 15-11-2017.
@@ -19,10 +18,10 @@ import cl.labs.steinnx.sanguchote.model.CL_Producto;
 
 public class DetalleCarritoAdapter extends RecyclerView.Adapter<DetalleCarritoAdapter.DetalleCarritoViewHolder> {
 
-    private ArrayList<CL_DetalleCompra> dataSource;
+    private ArrayList<DetalleCompra> dataSource;
     private Context context;
 
-    public DetalleCarritoAdapter(ArrayList<CL_DetalleCompra> detSource,Context context) {
+    public DetalleCarritoAdapter(ArrayList<DetalleCompra> detSource, Context context) {
         dataSource= detSource;
         this.context = context;
     }
@@ -36,7 +35,7 @@ public class DetalleCarritoAdapter extends RecyclerView.Adapter<DetalleCarritoAd
 
     @Override
     public void onBindViewHolder(DetalleCarritoViewHolder holder, int position) {
-        CL_DetalleCompra detalleCompra = dataSource.get(position);
+        DetalleCompra detalleCompra = dataSource.get(position);
         holder.tv_nombre.setText(detalleCompra.getProducto().getNombre().toString());
         holder.tv_cantidad.setText(String.valueOf(detalleCompra.getCantidad()));
     }

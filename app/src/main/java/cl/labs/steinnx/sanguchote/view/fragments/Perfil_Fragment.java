@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import cl.labs.steinnx.sanguchote.R;
-import cl.labs.steinnx.sanguchote.model.CL_SharedPreferences;
-import cl.labs.steinnx.sanguchote.model.CL_Usuario;
+import cl.labs.steinnx.sanguchote.model.CSharedPreferences;
+import cl.labs.steinnx.sanguchote.model.Usuario;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,7 +22,7 @@ import cl.labs.steinnx.sanguchote.model.CL_Usuario;
 public class Perfil_Fragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
-    private CL_Usuario user = CL_SharedPreferences.getUsuario();
+    private Usuario user = CSharedPreferences.getUsuario();
     private TextView tv_user,tv_nombre,tv_apellido;
 
     public Perfil_Fragment() {

@@ -2,9 +2,7 @@ package cl.labs.steinnx.sanguchote.retrofit;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-import cl.labs.steinnx.sanguchote.model.CL_Usuario;
+import cl.labs.steinnx.sanguchote.model.Usuario;
 
 /**
  * Created by DUOC on 14-11-2017.
@@ -15,9 +13,9 @@ public class UsuarioResponse {
     @SerializedName("estado")
     private int estado;
     @SerializedName("usuario")
-    CL_Usuario usuario;
+    Usuario usuario;
 
-    public UsuarioResponse(int estado, CL_Usuario getUsuarios) {
+    public UsuarioResponse(int estado, Usuario getUsuarios) {
         this.estado = estado;
         this.usuario = getUsuarios;
     }
@@ -30,11 +28,11 @@ public class UsuarioResponse {
         this.estado = estado;
     }
 
-    public CL_Usuario getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(CL_Usuario usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 }

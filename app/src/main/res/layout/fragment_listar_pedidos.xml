@@ -6,15 +6,15 @@
 
 
     <TextView
-        android:text="Pedidos"
-        android:textSize="35dp"
-        android:textColor="@color/colorTextButton"
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="11dp"
-        android:id="@+id/textView5" />
+        android:text="Compras"
+        android:textColor="@color/colorTextButton"
+        android:textSize="35dp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_frag_listar_pedidos"

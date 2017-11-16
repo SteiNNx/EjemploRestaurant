@@ -1,7 +1,5 @@
 package cl.labs.steinnx.sanguchote.model;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 
 /**
@@ -10,16 +8,16 @@ import java.util.ArrayList;
 
 public class ColeccionCarrito
 {
-    private static ArrayList<CL_DetalleCompra> listaProductos = new ArrayList<>();
+    private static ArrayList<DetalleCompra> listaProductos = new ArrayList<>();
 
-    public static void agregarPelicula(CL_DetalleCompra pro)
+    public static void agregarPelicula(DetalleCompra pro)
     {
         if (listaProductos.isEmpty()){
             listaProductos.add(pro);
             return;
         }else{
 
-        for (CL_DetalleCompra det:listaProductos) {
+        for (DetalleCompra det:listaProductos) {
             if (det.getProducto().getIdProducto()==pro.getProducto().getIdProducto()){
                 int cant=pro.getCantidad()+det.getCantidad();
                 pro.setCantidad(cant);
@@ -35,7 +33,7 @@ public class ColeccionCarrito
         }
     }
 
-    public static ArrayList<CL_DetalleCompra> obtenerProductos(){
+    public static ArrayList<DetalleCompra> obtenerProductos(){
         return listaProductos;
     }
 

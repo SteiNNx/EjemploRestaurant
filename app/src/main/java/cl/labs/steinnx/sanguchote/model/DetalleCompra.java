@@ -6,32 +6,32 @@ import com.google.gson.annotations.SerializedName;
  * Created by DUOC on 15-11-2017.
  */
 
-public class CL_DetalleCompra {
+public class DetalleCompra {
 
     @SerializedName("idCompra")
-    private CL_Compra compra;
+    private Compra compra;
     @SerializedName("idProducto")
-    private CL_Producto producto;
+    private Producto producto;
     @SerializedName("cantidad")
     private int cantidad;
 
-    public CL_DetalleCompra() {
+    public DetalleCompra() {
 
     }
 
-    public CL_Compra getCompra() {
+    public Compra getCompra() {
         return compra;
     }
 
-    public void setCompra(CL_Compra compra) {
+    public void setCompra(Compra compra) {
         this.compra = compra;
     }
 
-    public CL_Producto getProducto() {
+    public Producto getProducto() {
         return producto;
     }
 
-    public void setProducto(CL_Producto producto) {
+    public void setProducto(Producto producto) {
         this.producto = producto;
     }
 

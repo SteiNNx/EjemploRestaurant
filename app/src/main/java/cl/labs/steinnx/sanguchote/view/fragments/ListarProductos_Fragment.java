@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import cl.labs.steinnx.sanguchote.R;
-import cl.labs.steinnx.sanguchote.model.CL_Producto;
+import cl.labs.steinnx.sanguchote.model.Producto;
 import cl.labs.steinnx.sanguchote.model.adapter.ProductosAdapter;
 import cl.labs.steinnx.sanguchote.retrofit.API_Usuario_Interface;
 import cl.labs.steinnx.sanguchote.retrofit.Instance;
@@ -68,7 +68,7 @@ public class ListarProductos_Fragment extends Fragment {
                 if (response.isSuccessful()){
                     ProductosResponse productos = response.body();
                     Log.d("asdsd",""+productos.getEstado());
-                    List<CL_Producto> lista = productos.getListaProductos();
+                    List<Producto> lista = productos.getListaProductos();
                     productosAdapter.adiccionarProductos(lista);
                 }
             }

@@ -15,10 +15,9 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-import cl.labs.steinnx.sanguchote.LoginActivity;
 import cl.labs.steinnx.sanguchote.R;
-import cl.labs.steinnx.sanguchote.model.CL_DetalleCompra;
-import cl.labs.steinnx.sanguchote.model.CL_Producto;
+import cl.labs.steinnx.sanguchote.model.DetalleCompra;
+import cl.labs.steinnx.sanguchote.model.Producto;
 import cl.labs.steinnx.sanguchote.model.ColeccionCarrito;
 
 /**
@@ -28,7 +27,7 @@ import cl.labs.steinnx.sanguchote.model.ColeccionCarrito;
 public class ProductosAdapter extends  RecyclerView.Adapter<ProductosAdapter.ProductosViewHolder> {
 
 
-    private ArrayList<CL_Producto> dataSource;
+    private ArrayList<Producto> dataSource;
     private Context context;
 
     public ProductosAdapter(Context context) {
@@ -44,7 +43,7 @@ public class ProductosAdapter extends  RecyclerView.Adapter<ProductosAdapter.Pro
 
     @Override
     public void onBindViewHolder(ProductosViewHolder holder, int position) {
-        final CL_Producto producto = dataSource.get(position);
+        final Producto producto = dataSource.get(position);
         Picasso.with(context).load(producto.getUrlImagen()).into(holder.iv_logo);
         holder.tv_nombre.setText(producto.getNombre());
         holder.tv_stock.setText("Stock: "+producto.getStock());
@@ -92,7 +91,7 @@ public class ProductosAdapter extends  RecyclerView.Adapter<ProductosAdapter.Pro
                 btn_comprar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        CL_DetalleCompra detalleCompra = new CL_DetalleCompra();
+                        DetalleCompra detalleCompra = new DetalleCompra();
                         detalleCompra.setProducto(producto);
                         detalleCompra.setCantidad(Integer.parseInt(tv_cantidad.getText().toString()));
                         ColeccionCarrito.agregarPelicula(detalleCompra);
@@ -113,7 +112,7 @@ public class ProductosAdapter extends  RecyclerView.Adapter<ProductosAdapter.Pro
         return dataSource.size();
     }
 
-    public void adiccionarProductos(List<CL_Producto> lista) {
+    public void adiccionarProductos(List<Producto> lista) {
         dataSource.addAll(lista);
         notifyDataSetChanged();
     }

@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import cl.labs.steinnx.sanguchote.model.CL_SharedPreferences;
+import cl.labs.steinnx.sanguchote.model.CSharedPreferences;
 import cl.labs.steinnx.sanguchote.retrofit.API_Usuario_Interface;
 import cl.labs.steinnx.sanguchote.retrofit.Instance;
 import cl.labs.steinnx.sanguchote.retrofit.UsuarioResponse;
@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     UsuarioResponse resp = response.body();
                     Log.e("BODY LO!!!!!!!!!!!!!","onResponeseeeeeeeeeeee: "+response.body().getEstado());
                     if (resp.getEstado()==1 ){
-                        CL_SharedPreferences.setUsuario(resp.getUsuario());
+                        CSharedPreferences.setUsuario(resp.getUsuario());
                         Intent i = new Intent(LoginActivity.this, MenuPrincipalActivity.class);
                         startActivity(i);  
                     }else if(  resp.getEstado()==2  ){

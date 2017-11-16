@@ -10,10 +10,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import cl.labs.steinnx.sanguchote.R;
-import cl.labs.steinnx.sanguchote.model.CL_DetalleCompra;
+import cl.labs.steinnx.sanguchote.model.DetalleCompra;
 import cl.labs.steinnx.sanguchote.model.ColeccionCarrito;
 import cl.labs.steinnx.sanguchote.model.adapter.DetalleCarritoAdapter;
-import cl.labs.steinnx.sanguchote.model.adapter.ProductosAdapter;
 
 public class DetalleCompra_Activity extends AppCompatActivity {
 
@@ -28,7 +27,7 @@ public class DetalleCompra_Activity extends AppCompatActivity {
         rv_carrito = (RecyclerView) findViewById(R.id.rv_detalle_detalle_compra);
         btn_finalizar = (Button) findViewById(R.id.btn_finalizar);
 
-        ArrayList<CL_DetalleCompra> listaCarrito= ColeccionCarrito.obtenerProductos();
+        ArrayList<DetalleCompra> listaCarrito= ColeccionCarrito.obtenerProductos();
         if (listaCarrito!=null){
             carritoAdapter = new DetalleCarritoAdapter(listaCarrito,getApplicationContext());
             rv_carrito.setAdapter(carritoAdapter);

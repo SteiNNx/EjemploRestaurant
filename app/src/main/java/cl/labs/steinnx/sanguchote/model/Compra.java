@@ -6,18 +6,18 @@ import com.google.gson.annotations.SerializedName;
  * Created by DUOC on 15-11-2017.
  */
 
-public class CL_Compra {
+public class Compra {
 
     @SerializedName("id_compra")
     private int id_compra;
     @SerializedName("id_usuario")
-    private CL_Usuario usuario;
+    private Usuario usuario;
     @SerializedName("fecha_compra")
     private String fecha_compra;
     @SerializedName("total_pago")
     private int pago;
 
-    public CL_Compra() {
+    public Compra() {
     }
 
     public int getId_compra() {
@@ -28,11 +28,11 @@ public class CL_Compra {
         this.id_compra = id_compra;
     }
 
-    public CL_Usuario getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(CL_Usuario usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 

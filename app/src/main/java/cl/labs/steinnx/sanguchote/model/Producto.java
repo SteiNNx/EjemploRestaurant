@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by LC1300XXXX on 14/11/2017.
  */
 
-public class CL_Producto {
+public class Producto {
 
     @SerializedName("idProducto")
     private int idProducto;
@@ -19,7 +19,7 @@ public class CL_Producto {
     @SerializedName("precio")
     private int precio;
 
-    public CL_Producto() {
+    public Producto() {
     }
 
     public int getIdProducto() {

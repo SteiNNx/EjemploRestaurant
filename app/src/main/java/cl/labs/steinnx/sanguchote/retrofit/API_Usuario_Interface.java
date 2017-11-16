@@ -22,4 +22,9 @@ public interface API_Usuario_Interface {
     //Metodos Productos
     @GET("Producto/obtener_productos.php")
     Call<ProductosResponse> listaProductos();
+
+    //Metodos
+    @GET("Compra/obtener_compras_usuario.php")
+    Call<ComprasResponse> listadoCompras_usuario(@Query("id_usuario") String p_id);
+
 }

@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by DUOC on 14-11-2017.
  */
 
-public class CL_Usuario {
+public class Usuario {
     @SerializedName("id_usuario")
     private int id_usuario;
     @SerializedName("user")
@@ -20,7 +20,7 @@ public class CL_Usuario {
     @SerializedName("tipo_usuario")
     private String tipo_usuario;
 
-    public CL_Usuario() {
+    public Usuario() {
     }
 
     public int getId_usuario() {
