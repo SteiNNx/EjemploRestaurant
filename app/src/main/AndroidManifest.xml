@@ -20,7 +20,8 @@
         <activity
             android:name=".view.activities.MenuPrincipalActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".view.activities.DetalleCompra_Activity"></activity>
+        <activity android:name=".view.activities.Carrito_Activity" />
+        <activity android:name=".view.activities.DetalleCompraActivity"></activity>
     </application>
 
 </manifest>

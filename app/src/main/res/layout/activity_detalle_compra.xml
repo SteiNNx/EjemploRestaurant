@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context="cl.labs.steinnx.sanguchote.view.activities.DetalleCompra_Activity">
+    tools:context="cl.labs.steinnx.sanguchote.view.activities.Carrito_Activity">
 
     <RelativeLayout
         android:layout_width="match_parent"

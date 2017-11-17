@@ -4,11 +4,25 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import cl.labs.steinnx.sanguchote.R;
+import cl.labs.steinnx.sanguchote.model.CSharedPreferences;
+import cl.labs.steinnx.sanguchote.model.Compra;
+import cl.labs.steinnx.sanguchote.model.adapter.ComprasAdapter;
+import cl.labs.steinnx.sanguchote.retrofit.API_Usuario_Interface;
+import cl.labs.steinnx.sanguchote.retrofit.ComprasResponse;
+import cl.labs.steinnx.sanguchote.retrofit.Instance;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +33,10 @@ import cl.labs.steinnx.sanguchote.R;
 public class ListarPedidos_Fragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
+    private RecyclerView rv_listar_pedido;
+    private ComprasAdapter comprasAdapter;
+    private Retrofit retrofit= new Instance().getConexion();
+
 
     public ListarPedidos_Fragment() {
         // Required empty public constructor
@@ -28,8 +46,35 @@ public class ListarPedidos_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_listar_pedidos, container, false);
+        View view =inflater.inflate(R.layout.fragment_listar_pedidos, container, false);
+        rv_listar_pedido = (RecyclerView) view.findViewById(R.id.rv_frag_listar_pedidos);
+        comprasAdapter=new ComprasAdapter(getContext());
+        rv_listar_pedido.setAdapter(comprasAdapter);
+        rv_listar_pedido.setHasFixedSize(true);
+        final GridLayoutManager glm = new GridLayoutManager(container.getContext(),1);
+        rv_listar_pedido.setLayoutManager(glm);
+        llenarRecycler();
+        return view;
+    }
+
+    private void llenarRecycler() {
+        API_Usuario_Interface serv = retrofit.create(API_Usuario_Interface.class);
+        Call<ComprasResponse> responseCall = serv.listadoCompras_usuario(String.valueOf(CSharedPreferences.getUsuario().getId_usuario()));
+        responseCall.enqueue(new Callback<ComprasResponse>() {
+            @Override
+            public void onResponse(Call<ComprasResponse> call, Response<ComprasResponse> response) {
+                if (response.isSuccessful()){
+                    ComprasResponse comprasResponse = response.body();
+                    List<Compra> list = comprasResponse.getListadoCompras();
+                    comprasAdapter.addiccionarDatos(list);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ComprasResponse> call, Throwable t) {
+
+            }
+        });
     }
 
     // TODO: Rename method, update argument and hook method into UI event

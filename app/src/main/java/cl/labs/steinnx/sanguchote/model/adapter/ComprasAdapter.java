@@ -11,36 +11,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cl.labs.steinnx.sanguchote.R;
+import cl.labs.steinnx.sanguchote.model.Compra;
 import cl.labs.steinnx.sanguchote.model.DetalleCompra;
+import cl.labs.steinnx.sanguchote.retrofit.ComprasResponse;
 
 /**
- * Created by LC1300XXXX on 15/11/2017.
+ * Created by LC1300XXXX on 16/11/2017.
  */
 
-public class DetallePedidoAdapter extends RecyclerView.Adapter<DetallePedidoAdapter.DetallePedidoViewHolder> {
+public class ComprasAdapter extends RecyclerView.Adapter<ComprasAdapter.ComprasViewHolder>{
 
-    private ArrayList<DetalleCompra> dataSource;
+    private ArrayList<Compra> dataSource;
     private Context context;
 
-    public DetallePedidoAdapter(Context context) {
+    public ComprasAdapter(Context context) {
         dataSource=new ArrayList<>();
         this.context = context;
     }
-
     @Override
-    public DetallePedidoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ComprasViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_listar_compra,parent,false);
-        return new DetallePedidoViewHolder(view);
+        return new ComprasViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(DetallePedidoViewHolder holder, int position) {
+    public void onBindViewHolder(ComprasViewHolder holder, int position) {
 
-        final  DetalleCompra detalleCompra = dataSource.get(position);
-        holder.tv_id_compra.setText(String.valueOf(detalleCompra.getCompra().getId_compra()));
-        holder.tv_nombre.setText(detalleCompra.getCompra().getUsuario().getNombre()+" "+detalleCompra.getCompra().getUsuario().getApellido());
-        holder.tv_fecha.setText(detalleCompra.getCompra().getFecha_compra());
-        holder.tv_precio.setText(String.valueOf(detalleCompra.getCompra().getPago()));
+        final Compra compra = dataSource.get(position);
+        holder.tv_id_compra.setText(String.valueOf(compra.getId_compra()));
+        holder.tv_fecha.setText(compra.getFecha_compra());
+        holder.tv_nombre.setText(compra.getUsuario().getNombre()+" "+compra.getUsuario().getApellido());
+        holder.tv_precio.setText(String.valueOf(compra.getPago()));
+
     }
 
     @Override
@@ -48,9 +50,14 @@ public class DetallePedidoAdapter extends RecyclerView.Adapter<DetallePedidoAdap
         return dataSource.size();
     }
 
-    public class DetallePedidoViewHolder extends RecyclerView.ViewHolder {
+    public void addiccionarDatos(List<Compra> list) {
+        dataSource.addAll(list);
+        notifyDataSetChanged();
+    }
+
+    public class ComprasViewHolder extends RecyclerView.ViewHolder {
         private TextView tv_id_compra,tv_nombre,tv_fecha,tv_precio;
-        public DetallePedidoViewHolder(View itemView) {
+        public ComprasViewHolder(View itemView) {
             super(itemView);
             tv_id_compra = (TextView) itemView.findViewById(R.id.tv_frag_pedido_idped);
             tv_nombre = (TextView) itemView.findViewById(R.id.tv_frag_pedido_nombre_completo);

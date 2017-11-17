@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button btn_ingresar;
     private EditText edt_nombre,edt_pass;
 
-    Retrofit retrofit= new Instance().getConexion();
+    Retrofit retrofit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void login() {
-
+retrofit= new Instance().getConexion();
         API_Usuario_Interface anInterface = retrofit.create(API_Usuario_Interface.class);
         Call<UsuarioResponse> usuarioResponseCall = anInterface.loginUsuario(edt_nombre.getText().toString(),edt_pass.getText().toString());
         usuarioResponseCall.enqueue(new Callback<UsuarioResponse>() {

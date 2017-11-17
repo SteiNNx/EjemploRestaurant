@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_detalle_compra2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cl.labs.steinnx.sanguchote.view.activities.DetalleCompraActivity">
+
+    <TextView
+        android:text="Detalle Comra: "
+        android:textColor="@color/colorTextButton"
+        android:textSize="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView11"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="24dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:text="TextView"
+        android:textColor="@color/colorTextButton"
+        android:textSize="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_compra_detalle_id"
+        app:layout_constraintLeft_toRightOf="@+id/textView11"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_compra_detalle"
+        android:layout_width="0dp"
+        android:layout_height="6dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="11dp" />
+
+</android.support.constraint.ConstraintLayout>

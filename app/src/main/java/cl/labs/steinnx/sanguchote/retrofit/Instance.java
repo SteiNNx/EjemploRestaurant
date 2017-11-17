@@ -13,6 +13,7 @@ public class  Instance {
     public Instance() {
         this.retrofit = new Retrofit.Builder()
                 .baseUrl("http://kailalkalil.esy.es/WebServices_Restaurante/")
+                //.baseUrl("http://127.0.0.1:8080//WebServices_Restaurante/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
