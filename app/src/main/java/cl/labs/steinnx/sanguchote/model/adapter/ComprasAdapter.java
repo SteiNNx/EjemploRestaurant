@@ -1,6 +1,7 @@
 package cl.labs.steinnx.sanguchote.model.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import cl.labs.steinnx.sanguchote.R;
 import cl.labs.steinnx.sanguchote.model.Compra;
 import cl.labs.steinnx.sanguchote.model.DetalleCompra;
 import cl.labs.steinnx.sanguchote.retrofit.ComprasResponse;
+import cl.labs.steinnx.sanguchote.view.activities.DetalleCompraActivity;
 
 /**
  * Created by LC1300XXXX on 16/11/2017.
@@ -42,7 +44,14 @@ public class ComprasAdapter extends RecyclerView.Adapter<ComprasAdapter.ComprasV
         holder.tv_fecha.setText(compra.getFecha_compra());
         holder.tv_nombre.setText(compra.getUsuario().getNombre()+" "+compra.getUsuario().getApellido());
         holder.tv_precio.setText(String.valueOf(compra.getPago()));
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context,DetalleCompraActivity.class);
+                i.putExtra("id_compra",compra.getId_compra());
+                context.startActivity(i);
+            }
+        });
     }
 
     @Override

@@ -37,5 +37,7 @@ public interface API_Usuario_Interface {
     //Metodos DetalleCompra
     @POST("Pedido/insertar_detalle.php")
     Call<DetalleCompraResponse> insertarDetalleCompra(@Body DetalleCompra detalleCompra);
+    @GET("Pedido/obtener_detalle_idcompra.php")
+    Call<DetalleComprasResponse> listadoDetalle(@Query("id_compra") String p_id);
 
 }

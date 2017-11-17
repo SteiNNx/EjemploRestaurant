@@ -38,6 +38,7 @@ public class DetalleCarritoAdapter extends RecyclerView.Adapter<DetalleCarritoAd
         DetalleCompra detalleCompra = dataSource.get(position);
         holder.tv_nombre.setText(detalleCompra.getProducto().getNombre().toString());
         holder.tv_cantidad.setText(String.valueOf(detalleCompra.getCantidad()));
+        holder.tv_precio.setText(String.valueOf(detalleCompra.getProducto().getPrecio()));
     }
 
     @Override
@@ -47,10 +48,10 @@ public class DetalleCarritoAdapter extends RecyclerView.Adapter<DetalleCarritoAd
 
     public class DetalleCarritoViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView tv_nombre,tv_cantidad;
+        private TextView tv_nombre,tv_cantidad,tv_precio;
         public DetalleCarritoViewHolder(View itemView) {
             super(itemView);
-
+            tv_precio = (TextView) itemView.findViewById(R.id.tv_carrito_precio);
             tv_nombre = (TextView) itemView.findViewById(R.id.tv_carrito_nombre);
             tv_cantidad = (TextView) itemView.findViewById(R.id.tv_carrito_cantidad);
         }
