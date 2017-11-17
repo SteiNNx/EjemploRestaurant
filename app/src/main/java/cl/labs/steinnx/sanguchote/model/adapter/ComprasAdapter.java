@@ -48,7 +48,7 @@ public class ComprasAdapter extends RecyclerView.Adapter<ComprasAdapter.ComprasV
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context,DetalleCompraActivity.class);
-                i.putExtra("id_compra",compra.getId_compra());
+                i.putExtra("id_compra",String.valueOf(compra.getId_compra()));
                 context.startActivity(i);
             }
         });
