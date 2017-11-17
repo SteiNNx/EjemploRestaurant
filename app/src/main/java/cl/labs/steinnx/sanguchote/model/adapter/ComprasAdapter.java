@@ -7,15 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import cl.labs.steinnx.sanguchote.R;
+import cl.labs.steinnx.sanguchote.model.CSharedPreferences;
 import cl.labs.steinnx.sanguchote.model.Compra;
-import cl.labs.steinnx.sanguchote.model.DetalleCompra;
-import cl.labs.steinnx.sanguchote.retrofit.ComprasResponse;
-import cl.labs.steinnx.sanguchote.view.activities.DetalleCompraActivity;
+import cl.labs.steinnx.sanguchote.view.activities.DetalleActivity;
 
 /**
  * Created by LC1300XXXX on 16/11/2017.
@@ -47,8 +47,10 @@ public class ComprasAdapter extends RecyclerView.Adapter<ComprasAdapter.ComprasV
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(context,DetalleCompraActivity.class);
-                i.putExtra("id_compra",String.valueOf(compra.getId_compra()));
+                Intent i = new Intent(context,DetalleActivity.class);
+                //i.putExtra("id_compra",String.valueOf(compra.getId_compra()));
+                CSharedPreferences.setId_compra(compra.getId_compra());
+                Toast.makeText(context, "ID"+compra.getId_compra(), Toast.LENGTH_SHORT).show();
                 context.startActivity(i);
             }
         });

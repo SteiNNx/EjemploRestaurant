@@ -101,6 +101,7 @@ public class Carrito_Activity extends AppCompatActivity implements View.OnClickL
                                     }
                                 });
                             }
+                            ColeccionCarrito.obtenerProductos().clear();
                         } else if (comprasResponse.getEstado() == 2) {
                             Toast.makeText(Carrito_Activity.this, "No Compro", Toast.LENGTH_SHORT).show();
                         }

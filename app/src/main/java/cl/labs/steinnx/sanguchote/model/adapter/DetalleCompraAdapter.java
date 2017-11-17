@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import cl.labs.steinnx.sanguchote.R;
 import cl.labs.steinnx.sanguchote.model.DetalleCompra;
@@ -47,6 +48,11 @@ public class DetalleCompraAdapter extends RecyclerView.Adapter<DetalleCompraAdap
     @Override
     public int getItemCount() {
         return dataSource.size();
+    }
+
+    public void addiccionarDatos(List<DetalleCompra> detalleCompraList) {
+        dataSource.addAll(detalleCompraList);
+        notifyDataSetChanged();
     }
 
     public class DetalleCompraViewHolder extends RecyclerView.ViewHolder{
