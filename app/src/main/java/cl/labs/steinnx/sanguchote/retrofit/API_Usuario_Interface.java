@@ -1,6 +1,7 @@
 package cl.labs.steinnx.sanguchote.retrofit;
 
 import cl.labs.steinnx.sanguchote.model.Compra;
+import cl.labs.steinnx.sanguchote.model.DetalleCompra;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -26,11 +27,15 @@ public interface API_Usuario_Interface {
     @GET("Producto/obtener_productos.php")
     Call<ProductosResponse> listaProductos();
 
-    //Metodos
+    //Metodos Compra
     @GET("Compra/obtener_compras_usuario.php")
     Call<ComprasResponse> listadoCompras_usuario(@Query("id_usuario") String p_id);
     @POST("Compra/insertar_compra.php")
     Call<ComprasResponse> insertarCompra(@Body Compra compra);
 
+
+    //Metodos DetalleCompra
+    @POST("Pedido/insertar_detalle.php")
+    Call<DetalleCompraResponse> insertarDetalleCompra(@Body DetalleCompra detalleCompra);
 
 }

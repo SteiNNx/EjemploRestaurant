@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -18,6 +19,7 @@ import cl.labs.steinnx.sanguchote.model.ColeccionCarrito;
 import cl.labs.steinnx.sanguchote.model.adapter.DetalleCarritoAdapter;
 import cl.labs.steinnx.sanguchote.retrofit.API_Usuario_Interface;
 import cl.labs.steinnx.sanguchote.retrofit.ComprasResponse;
+import cl.labs.steinnx.sanguchote.retrofit.DetalleCompraResponse;
 import cl.labs.steinnx.sanguchote.retrofit.Instance;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -61,33 +63,59 @@ public class Carrito_Activity extends AppCompatActivity implements View.OnClickL
     }
 
     private void RealizarCompra() {
-        Compra compra =  new Compra();
-        compra.setUsuario(CSharedPreferences.getUsuario());
-        int precio = 0;
-        for (DetalleCompra pro :ColeccionCarrito.obtenerProductos()) {
-            precio +=(pro.getCantidad()*pro.getProducto().getPrecio());
-        }
-        compra.setPago(precio);
+        if (!ColeccionCarrito.obtenerProductos().isEmpty()) {
+            Compra compra = new Compra();
+            compra.setUsuario(CSharedPreferences.getUsuario());
+            int precio = 0;
+            for (DetalleCompra pro : ColeccionCarrito.obtenerProductos()) {
+                precio += (pro.getCantidad() * pro.getProducto().getPrecio());
+            }
+            compra.setPago(precio);
 
-        Retrofit retrofit = new Instance().getConexion();
-        API_Usuario_Interface servicio = retrofit.create(API_Usuario_Interface.class);
-        Call<ComprasResponse> responseCall = servicio.insertarCompra(compra);
-        responseCall.enqueue(new Callback<ComprasResponse>() {
-            @Override
-            public void onResponse(Call<ComprasResponse> call, Response<ComprasResponse> response) {
-                if (response.isSuccessful()){
-                    ComprasResponse comprasResponse = response.body();
-                    if (comprasResponse.getEstado()==1){
-                        Toast.makeText(Carrito_Activity.this, "Insertor", Toast.LENGTH_SHORT).show();
+            final Retrofit retrofit = new Instance().getConexion();
+            final API_Usuario_Interface servicio = retrofit.create(API_Usuario_Interface.class);
+            Call<ComprasResponse> responseCall = servicio.insertarCompra(compra);
+            responseCall.enqueue(new Callback<ComprasResponse>() {
+                @Override
+                public void onResponse(Call<ComprasResponse> call, Response<ComprasResponse> response) {
+                    if (response.isSuccessful()) {
+                        ComprasResponse comprasResponse = response.body();
+                        Log.e("INSERTAR CARIIITO", "INSERTAR: " + comprasResponse.getEstado());
+                        if (comprasResponse.getEstado() == 1) {
+                            Toast.makeText(Carrito_Activity.this, "Compro", Toast.LENGTH_SHORT).show();
+                            for (DetalleCompra det : ColeccionCarrito.obtenerProductos()) {
+                                Call<DetalleCompraResponse> detalleCompraResponseCall = servicio.insertarDetalleCompra(det);
+                                detalleCompraResponseCall.enqueue(new Callback<DetalleCompraResponse>() {
+                                    @Override
+                                    public void onResponse(Call<DetalleCompraResponse> call, Response<DetalleCompraResponse> response) {
+                                        if (response.isSuccessful()) {
+                                            DetalleCompraResponse detalleCompraResponse = response.body();
+                                        } else {
+                                            Log.e("ERRORRRRR!!!!!!!!!!!!!!", "onResponeseeeeeeeeeeee: " + response.errorBody());
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<DetalleCompraResponse> call, Throwable t) {
+                                        Log.e("ERRORRRRR!!!!!!!!!!!!!!", "onFailureeeeeeeeeee: " + t.getMessage());
+                                    }
+                                });
+                            }
+                        } else if (comprasResponse.getEstado() == 2) {
+                            Toast.makeText(Carrito_Activity.this, "No Compro", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Log.e("ERRORRRRR!!!!!!!!!!!!!!", "onResponeseeeeeeeeeeee: " + response.errorBody());
                     }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<ComprasResponse> call, Throwable t) {
-
-            }
-        });
-
+                @Override
+                public void onFailure(Call<ComprasResponse> call, Throwable t) {
+                    Log.e("ERRORRRRR!!!!!!!!!!!!!!", "onFailureeeeeeeeeee: " + t.getMessage());
+                }
+            });
+        }else {
+            Toast.makeText(this, "Agrege Productos al Carrito :)", Toast.LENGTH_SHORT).show();
+        }
     }
 }

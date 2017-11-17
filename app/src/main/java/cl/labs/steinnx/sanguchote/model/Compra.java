@@ -11,11 +11,11 @@ public class Compra {
     @SerializedName("id_compra")
     private int id_compra;
     @SerializedName("id_usuario")
-    private Usuario usuario;
+    private Usuario id_usuario;
     @SerializedName("fecha_compra")
     private String fecha_compra;
     @SerializedName("total_pago")
-    private int pago;
+    private int total_pago;
 
     public Compra() {
     }
@@ -29,11 +29,11 @@ public class Compra {
     }
 
     public Usuario getUsuario() {
-        return usuario;
+        return id_usuario;
     }
 
     public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+        this.id_usuario = usuario;
     }
 
     public String getFecha_compra() {
@@ -45,10 +45,10 @@ public class Compra {
     }
 
     public int getPago() {
-        return pago;
+        return total_pago;
     }
 
     public void setPago(int pago) {
-        this.pago = pago;
+        this.total_pago = pago;
     }
 }

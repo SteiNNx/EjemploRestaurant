@@ -9,9 +9,9 @@ import com.google.gson.annotations.SerializedName;
 public class DetalleCompra {
 
     @SerializedName("idCompra")
-    private Compra compra;
+    private Compra idCompra;
     @SerializedName("idProducto")
-    private Producto producto;
+    private Producto idProducto;
     @SerializedName("cantidad")
     private int cantidad;
 
@@ -20,19 +20,19 @@ public class DetalleCompra {
     }
 
     public Compra getCompra() {
-        return compra;
+        return idCompra;
     }
 
     public void setCompra(Compra compra) {
-        this.compra = compra;
+        this.idCompra = compra;
     }
 
     public Producto getProducto() {
-        return producto;
+        return idProducto;
     }
 
     public void setProducto(Producto producto) {
-        this.producto = producto;
+        this.idProducto = producto;
     }
 
     public int getCantidad() {
