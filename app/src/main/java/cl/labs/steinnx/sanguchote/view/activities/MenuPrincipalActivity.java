@@ -104,7 +104,7 @@ public class MenuPrincipalActivity extends AppCompatActivity
         if (null != fragment){
             getSupportFragmentManager()
                     .beginTransaction()
-                    //.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right)
+                    .setCustomAnimations(R.anim.slide_in_left, R.anim.slide_in_right)
                     .replace(R.id.mi_frame, fragment)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                     .addToBackStack(null)

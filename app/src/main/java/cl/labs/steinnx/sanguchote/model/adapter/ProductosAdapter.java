@@ -19,6 +19,7 @@ import cl.labs.steinnx.sanguchote.R;
 import cl.labs.steinnx.sanguchote.model.DetalleCompra;
 import cl.labs.steinnx.sanguchote.model.Producto;
 import cl.labs.steinnx.sanguchote.model.ColeccionCarrito;
+import cl.labs.steinnx.sanguchote.view.animation.AnimationUtilRecyclerView;
 
 /**
  * Created by LC1300XXXX on 14/11/2017.
@@ -29,6 +30,8 @@ public class ProductosAdapter extends  RecyclerView.Adapter<ProductosAdapter.Pro
 
     private ArrayList<Producto> dataSource;
     private Context context;
+    private int previousPosition = 0;
+
 
     public ProductosAdapter(Context context) {
         dataSource= new ArrayList<>();
@@ -48,7 +51,13 @@ public class ProductosAdapter extends  RecyclerView.Adapter<ProductosAdapter.Pro
         holder.tv_nombre.setText(producto.getNombre());
         holder.tv_stock.setText("Stock: "+producto.getStock());
         holder.tv_precio.setText("Precio: "+producto.getPrecio());
+        if(position > previousPosition){ // We are scrolling DOWN
+            AnimationUtilRecyclerView.animate(holder, true);
+        }else{ // We are scrolling UP
+            AnimationUtilRecyclerView.animate(holder, false);
+        }
 
+        previousPosition = position;
         //Click del Item del RV
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
