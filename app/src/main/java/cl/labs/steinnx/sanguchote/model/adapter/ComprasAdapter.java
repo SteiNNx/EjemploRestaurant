@@ -16,6 +16,7 @@ import cl.labs.steinnx.sanguchote.R;
 import cl.labs.steinnx.sanguchote.model.CSharedPreferences;
 import cl.labs.steinnx.sanguchote.model.Compra;
 import cl.labs.steinnx.sanguchote.view.activities.DetalleActivity;
+import cl.labs.steinnx.sanguchote.view.animation.AnimationUtilRecyclerView;
 
 /**
  * Created by LC1300XXXX on 16/11/2017.
@@ -25,6 +26,7 @@ public class ComprasAdapter extends RecyclerView.Adapter<ComprasAdapter.ComprasV
 
     private ArrayList<Compra> dataSource;
     private Context context;
+    private int previousPosition = 0;
 
     public ComprasAdapter(Context context) {
         dataSource=new ArrayList<>();
@@ -54,6 +56,13 @@ public class ComprasAdapter extends RecyclerView.Adapter<ComprasAdapter.ComprasV
                 context.startActivity(i);
             }
         });
+        if(position > previousPosition){ // We are scrolling DOWN
+            AnimationUtilRecyclerView.animate(holder, true);
+        }else{ // We are scrolling UP
+            AnimationUtilRecyclerView.animate(holder, false);
+        }
+
+        previousPosition = position;
     }
 
     @Override

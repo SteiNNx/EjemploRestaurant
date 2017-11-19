@@ -21,7 +21,7 @@ import retrofit2.Retrofit;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btn_ingresar;
+    private Button btn_ingresar,btn_registrarse;
     private EditText edt_nombre,edt_pass;
 
     Retrofit retrofit;
@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         edt_nombre = (EditText) findViewById(R.id.etUsuarioLogin);
         edt_pass = (EditText) findViewById(R.id.etPasswordLogin);
         btn_ingresar.setOnClickListener(this);
+
     }
 
     @Override

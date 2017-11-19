@@ -15,6 +15,7 @@ import java.util.List;
 
 import cl.labs.steinnx.sanguchote.R;
 import cl.labs.steinnx.sanguchote.model.DetalleCompra;
+import cl.labs.steinnx.sanguchote.view.animation.AnimationUtilRecyclerView;
 
 /**
  * Created by SteinnxLabs on 17/11/2017.
@@ -24,6 +25,7 @@ public class DetalleCompraAdapter extends RecyclerView.Adapter<DetalleCompraAdap
 
     private ArrayList<DetalleCompra> dataSource;
     private Context context;
+    private int previousPosition = 0;
 
     public DetalleCompraAdapter(Context context) {
         dataSource= new ArrayList<>();
@@ -43,6 +45,13 @@ public class DetalleCompraAdapter extends RecyclerView.Adapter<DetalleCompraAdap
         holder.tv_precio.setText("Precio: "+detalleCompra.getProducto().getPrecio());
         holder.tv_cantidad.setText("Cantidad: "+detalleCompra.getCantidad());
         Picasso.with(context).load(detalleCompra.getProducto().getUrlImagen()).into(holder.iv_logo);
+        if(position > previousPosition){ // We are scrolling DOWN
+            AnimationUtilRecyclerView.animate(holder, true);
+        }else{ // We are scrolling UP
+            AnimationUtilRecyclerView.animate(holder, false);
+        }
+
+        previousPosition = position;
     }
 
     @Override

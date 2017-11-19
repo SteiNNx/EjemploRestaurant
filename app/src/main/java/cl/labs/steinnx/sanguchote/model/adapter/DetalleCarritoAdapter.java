@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import cl.labs.steinnx.sanguchote.R;
 import cl.labs.steinnx.sanguchote.model.DetalleCompra;
+import cl.labs.steinnx.sanguchote.view.animation.AnimationUtilRecyclerView;
 
 /**
  * Created by DUOC on 15-11-2017.
@@ -20,6 +21,7 @@ public class DetalleCarritoAdapter extends RecyclerView.Adapter<DetalleCarritoAd
 
     private ArrayList<DetalleCompra> dataSource;
     private Context context;
+    private int previousPosition = 0;
 
     public DetalleCarritoAdapter(ArrayList<DetalleCompra> detSource, Context context) {
         dataSource= detSource;
@@ -39,6 +41,13 @@ public class DetalleCarritoAdapter extends RecyclerView.Adapter<DetalleCarritoAd
         holder.tv_nombre.setText(detalleCompra.getProducto().getNombre().toString());
         holder.tv_cantidad.setText(String.valueOf(detalleCompra.getCantidad()));
         holder.tv_precio.setText(String.valueOf(detalleCompra.getProducto().getPrecio()));
+        if(position > previousPosition){ // We are scrolling DOWN
+            AnimationUtilRecyclerView.animate(holder, true);
+        }else{ // We are scrolling UP
+            AnimationUtilRecyclerView.animate(holder, false);
+        }
+
+        previousPosition = position;
     }
 
     @Override

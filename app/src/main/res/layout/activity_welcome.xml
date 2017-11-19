@@ -9,9 +9,9 @@
     tools:context="cl.labs.steinnx.sanguchote.view.activities.WelcomeActivity">
 
     <ImageView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/logo1"
         android:id="@+id/imageView2"
         android:layout_marginStart="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
