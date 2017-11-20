@@ -1,5 +1,11 @@
 # EjemploRestaurant
 
+Privilegios
+=======
+Usuario:jora
+Password:1234
+
+
 Caso 
 =====
 - Se nos solicito crear una aplicacion, que simule un restaurant en el cual el usuario se logee y se desplegen las distintas opciones que el posea
@@ -13,7 +19,7 @@ Requerimientos
 - Desarrollar una Aplicacion:
   - Lenguaje Nativo Android
   - Consumir un Servicio Web REST API    http://kailalkalil.esy.es/WebServices_Restaurante/
-  - Base de Datos MySQL
+  - Base de Datos MySQL https://www.hostinger.es/
 
 ¿Que Utilizamos?
 ================
