@@ -15,6 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="19dp"
+        android:textColor="@color/colorTextButton"
         android:id="@+id/tv_detalle_act_id_compr" />
 
     <android.support.v7.widget.RecyclerView

@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import cl.labs.steinnx.sanguchote.LoginActivity;
 import cl.labs.steinnx.sanguchote.R;
 import cl.labs.steinnx.sanguchote.view.fragments.ListarPedidos_Fragment;
 import cl.labs.steinnx.sanguchote.view.fragments.ListarProductos_Fragment;
@@ -47,12 +48,12 @@ public class MenuPrincipalActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        /*DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-        }
+        }*/
     }
 
     @Override
@@ -92,7 +93,9 @@ public class MenuPrincipalActivity extends AppCompatActivity
         } else if (id == R.id.nav_perfil) {
             addFragment(new Perfil_Fragment());
         } else if (id == R.id.nav_cerrar) {
-
+            Intent intent = new Intent(MenuPrincipalActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

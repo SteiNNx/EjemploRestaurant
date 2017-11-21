@@ -59,7 +59,8 @@ retrofit= new Instance().getConexion();
                     if (resp.getEstado()==1 ){
                         CSharedPreferences.setUsuario(resp.getUsuario());
                         Intent i = new Intent(LoginActivity.this, MenuPrincipalActivity.class);
-                        startActivity(i);  
+                        startActivity(i);
+                        finish();
                     }else if(  resp.getEstado()==2  ){
                         Toast.makeText(LoginActivity.this, "Usuario Incorrecto", Toast.LENGTH_SHORT).show();
                     }else if(resp.getEstado()==3 ){
